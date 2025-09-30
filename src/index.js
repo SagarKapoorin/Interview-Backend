@@ -42,6 +42,10 @@ const geminiBreaker = new CircuitBreaker(
   geminiOptions
 );
 
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 app.post("/api/gemini/generate-questions", async (req, res) => {
   const { resumeText }=req.body;
   if (!resumeText) {
